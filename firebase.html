@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+</body>
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-storage.js"></script>
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+<script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-analytics.js"></script>
+
+
+<script>
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyA6223fabv7PTDx2TdKZ1NkcH2IFY_0Z60",
+    authDomain: "crud-vue-6ffb3.firebaseapp.com",
+    databaseURL: "https://crud-vue-6ffb3.firebaseio.com",
+    projectId: "crud-vue-6ffb3",
+    storageBucket: "crud-vue-6ffb3.appspot.com",
+    messagingSenderId: "794200233679",
+    appId: "1:794200233679:web:70758809b5b11cdec609ba",
+    measurementId: "G-VJYVNSYQXN"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  firebase.analytics();
+  
+  var storage = firebase.storage();
+  var storageRef = storage.ref();
+  
+   var imagesRef = storageRef.child('imagenes_prods/material_construccion/CEMENTO-VIACHA-50-KG.jpg');
+
+   imagesRef.getDownloadURL().then( (url)=> {
+    document.write('<img src="'+url+'" alt=""/>');
+   }).catch((error)=>{
+      switch (error.code) {
+        case 'storage/object-not-found':
+          alert ('el archivo no existe');
+        break;
+        case'storage/unauthorized':
+          alert ('no autorizado');
+        break;
+        case  'storage/canceled':
+          alert('cancelado');
+        break;
+        case 'storage/unknown':
+          alert('no conocido');
+        break;
+        default:
+        alert ('error no conocido');
+          break;
+      }
+   });
+
+  
+  // var fileName = 'CEMENTO-VIACHA-50-KG.jpg';
+  // var spaceRef = imagesRef.child(fileName);
+  // console.log(spaceRef);
+  // var path =spaceRef.fullPath;
+  // console.log(path);
+  // var name = spaceRef.name;
+  // console.log(name);
+  // var imagesRef = spaceRef.parent;
+
+  
+
+
+
+
+
+  //
+</script>
+
+</html>

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <!-- <meta http-equiv="content-type" content="text/html; charset=utf-8"> -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>evetos</h1>  
+    <button id="respuesta">evento</button>
+    <h1>propagacion</h1>
+    <header>
+        <h1>Hola mundo</h1>
+    <h2>subheader</h2>
+    <img src="" alt="">    
+    </header>
+    
+</body>
+<script>
+//     eventos|
+//     - click, dblclick
+// - change
+// - drag (dragenter, dragend, dragleave, dragover, dragstart,...)
+// - focus
+// - keydown, keyup, keypress,
+// - mouseenter, mouseleave, mouseover, mouseup,...
+// - scroll
+// - submit
+// ...
+
+
+
+    var target= document.querySelector('#respuesta');
+    target.addEventListener('click',onClickHandler,false);
+    function onClickHandler(e) {
+        e.preventDefault();
+        console.log(e);
+    }
+
+var header= document.querySelector('header');
+header.addEventListener('click',( e)=>{
+    console.log('has clickado en '+e.target.nodeName);
+    e.stopPropagation();// para evitar la propagacion del evento --provar comentando esta linea
+
+});
+
+
+document.addEventListener('click',(e)=>{
+    console.log('has clickado en el documento');
+});
+//patron pubsub
+
+var pubsub=(()=>{
+        
+        var suscriptores ={};
+        function EventObject() {};
+
+        function subscribe(event,callback) {
+            if (!suscriptores[event]) {
+                var suscriptorArray=[callback];
+                suscriptores[event]=suscriptorArray;
+                
+            } else {
+                suscriptores[event].push(callback);
+            }
+        }
+        
+        function publish(event,data ) { // aumentamos data
+
+            var eventObject = new EventObject();// para
+            eventObject.type =  event;//             aumentar
+
+            if (data) {//                               datos
+                eventObject.data = data;//                  al
+            }//                                                     evento
+
+            if(suscriptores[event]){
+                suscriptores[event].forEach(callback => {
+                    callback(eventObject);   //aumentamos el eventObject para enviar datos 
+                });
+            }
+        }
+        
+        return{
+            pub: publish,
+            sub: subscribe
+        };
+    });
+
+// var pubsubi = pubsub();
+// pubsubi.sub('miEvento',e=> console.log('miEvento a sido lanzado'));
+
+// pubsubi.pub('miEvento');
+
+var pubsubi2 = pubsub();
+
+pubsubi2.sub('MiEvento',e=>{
+    console.log('miEvento ha sido lanzado y contiene: ', e.data.misDatos);
+});
+
+pubsubi2.pub('MiEvento',{
+    misDatos: 'mis datos son estos'
+});
+
+
+
+</script>
+</html>

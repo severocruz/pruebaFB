@@ -1,0 +1,135 @@
+{
+    "productos":[
+        {
+            "estado":"A",
+            "nombre":"TANQUE DE AGUA DE 1200",
+            "rubro": "CONSTRUCCIÓN Y FERRETERÍA",
+            "descripcion": "Tanque exterior de 1200 litros ",
+            "precio": 1200.0,
+            "stock":1,
+            "Unidades":["Unidad","docena"],
+            "imagenes":[]
+        },
+        {
+            "estado":"A",
+            "nombre":"TANQUE DE AGUA DE 600",
+            "rubro": "CONSTRUCCIÓN Y FERRETERÍA",
+            "descripcion": "Tanque exterior de 600 litros ",
+            "precio": 600.0,
+            "stock":1,
+            "Unidades":["Unidad","docena"],
+            "imagenes":[]
+        },
+        {
+            "estado":"A",
+            "nombre":"TANQUE DE AGUA DE 900",
+            "rubro": "CONSTRUCCIÓN Y FERRETERÍA",
+            "descripcion": "Tanque exterior de 900 litros ",
+            "precio": 900.0,
+            "stock":1,
+            "Unidades":["Unidad","docena"],
+            "imagenes":[]
+        },
+        {
+            "estado":"A",
+            "nombre":"CEMENTO COLA ESPECIAL DURAMIX/MEGAMIX",
+            "rubro": "CONSTRUCCIÓN Y FERRETERÍA",
+            "descripcion": "Cemento cola para cerámica ",
+            "precio": 20.0,
+            "stock":1,
+            "Unidades":["Bolsa de 20 Kg."],
+            "imagenes":[]
+        },
+        {
+            "estado":"A",
+            "nombre":"AGUA DE MESA",
+            "rubro": "BEBIDAS DE MESA",
+            "descripcion": "agua de mesa sin saborizantes",
+            "precio": 20.0,
+            "stock":1,
+            "Unidades":["Botellón de 10 litros"],
+            "imagenes":[]
+        },
+        {
+            "estado":"A",
+            "nombre":"AGUA SABOR MANZANA",
+            "rubro": "BEBIDAS DE MESA",
+            "descripcion": "agua saborizada con sabor a manzana",
+            "precio": 35.0,
+            "stock":1,
+            "Unidades":["Botellón de 10 litros"],
+            "imagenes":[]
+        },
+        {
+            "estado":"A",
+            "nombre":"AGUA SABOR PIÑA",
+            "rubro": "BEBIDAS DE MESA",
+            "descripcion": "agua saborizada con sabor a piña",
+            "precio": 35.0,
+            "stock":1,
+            "Unidades":["Botellón de 10 litros"],
+            "imagenes":[]
+        },
+        {
+            "estado":"A",
+            "nombre":"AGUA SABOR UVA",
+            "rubro": "BEBIDAS DE MESA",
+            "descripcion": "agua saborizada con sabor a uva",
+            "precio": 35.0,
+            "stock":1,
+            "Unidades":["Botellón de 10 litros"],
+            "imagenes":[]
+        },
+        {
+            "estado":"A",
+            "nombre":"AGUA SABOR MARACUYÁ",
+            "rubro": "BEBIDAS DE MESA",
+            "descripcion": "agua saborizada con sabor a maracuyá",
+            "precio": 35.0,
+            "stock":1,
+            "Unidades":["Botellón de 10 litros"],
+            "imagenes":[]
+        },
+        {
+            "estado":"A",
+            "nombre":"AGUA SABOR LIMÓN",
+            "rubro": "BEBIDAS DE MESA",
+            "descripcion": "agua saborizada con sabor a limón",
+            "precio": 35.0,
+            "stock":1,
+            "Unidades":["Botellón de 10 litros"],
+            "imagenes":[]
+        },
+        {
+            "estado":"A",
+            "nombre":"AGUA SABOR MELÓN",
+            "rubro": "BEBIDAS DE MESA",
+            "descripcion": "agua saborizada con sabor a melón",
+            "precio": 35.0,
+            "stock":1,
+            "Unidades":["Botellón de 10 litros"],
+            "imagenes":[]
+        },
+        {
+            "estado":"A",
+            "nombre":"DISPENSADOR",
+            "rubro": "BEBIDAS DE MESA",
+            "descripcion": "Dispensador de bebidas",
+            "precio": 75.0,
+            "stock":1,
+            "Unidades":["Unidad"],
+            "imagenes":[]
+        },
+        {
+            "estado":"A",
+            "nombre":"BOTELLON DE AGUA 20 LITROS",
+            "rubro": "BEBIDAS DE MESA",
+            "descripcion": "Botellón de bebidas de 20 litros ",
+            "precio": 75.0,
+            "stock":1,
+            "Unidades":["Unidad"],
+            "imagenes":[]
+        }     
+        
+    ]
+}

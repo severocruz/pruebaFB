@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="resultado">
+
+    </div>
+</body>
+<script>
+    var respuestaHtml=document.querySelector('#resultado');
+    var tpl= document.createDocumentFragment();
+    var elemento
+
+    fetch("https://api.themoviedb.org/3/movie/now_playing?api_key=3a53e4502f95a3ad2ae93758ce877954&language=es-ES&page=1")
+        .then(reponse=>{
+            return reponse.json();
+        })
+        .then((results)=>{
+
+            var resfinal = results.results;
+            resfinal.forEach(element => {
+                elemento= document.createTextNode(
+                `<h3>${element.title}</h3>`);    
+                tpl.appendChild(elemento);
+            });
+
+            respuestaHtml.appendChild(tpl);
+        });
+</script>
+</html>

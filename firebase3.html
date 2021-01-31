@@ -1,0 +1,61 @@
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>firebase realtime database</title>
+</head>
+<body>
+    
+</body>
+
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-app.js"></script>
+
+<script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-firestore.js"></script>
+
+<script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-database.js"></script>
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+<script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-analytics.js"></script>
+
+<script>
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyA6223fabv7PTDx2TdKZ1NkcH2IFY_0Z60",
+    authDomain: "crud-vue-6ffb3.firebaseapp.com",
+    databaseURL: "https://crud-vue-6ffb3.firebaseio.com",
+    projectId: "crud-vue-6ffb3",
+    storageBucket: "crud-vue-6ffb3.appspot.com",
+    messagingSenderId: "794200233679",
+    appId: "1:794200233679:web:70758809b5b11cdec609ba",
+    measurementId: "G-VJYVNSYQXN"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+
+  var database = firebase.database();
+  function writePedido(id,cant,celu,cli,emp,latitud,longitud,prod) {
+    firebase.database().ref('pedido/'+id).set({
+      cantidad :cant,
+      cel      : celu,
+      cliente  : cli,
+      empresa  : emp,
+      lati     : latitud,
+      longitud : longitud,
+      producto : prod
+    });
+
+  }
+writePedido('5',500,'74858581','ARTURITO','MUCHOS WEB',0.45485,0.35468,'CASAS');
+console.log('echo :>>> ');
+
+// var datos=firebase.database().ref('pedido');
+// datos.on('value',snapshot=>{
+//  console.log(snapshot.val()[1]);
+// });
+</script>
+</html>

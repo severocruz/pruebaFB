@@ -1,0 +1,10 @@
+{"pedido":  {
+        "empresa"  : "SAN MATEO",
+        "producto" : "CEMENTO 1",
+        "cantidad" : 50, 
+        "lati"     : 0.44545,
+        "longi"    : 0.65654,
+        "cliente"  : "juan macias",
+        "cel"      :"784855825"
+    }
+}

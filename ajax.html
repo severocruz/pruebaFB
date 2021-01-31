@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="respuesta"></div>
+</body>
+<script>
+    var xhr = new XMLHttpRequest();
+    function reqHandler() {
+        if (this.readyState===4 && this.status===200) {
+            var respuesta=JSON.parse(this.responseText)
+            var respHtml= document.querySelector('#respuesta');
+            var cadh='<ul>';
+            respuesta.results.forEach(element => {
+                if(element.overview1!==''){
+                    cadh+='<li><h3>'+element.title+'</h3>'+ element.overview+'</li>';
+                }
+                
+                console.log (element);
+            });
+            cadh+= '</ul>' ;
+            console.log(  this.responseText);
+            respHtml.innerHTML=cadh;
+        } 
+
+
+    }
+    xhr.onload=reqHandler;
+    xhr.open('GET','https://api.themoviedb.org/3/movie/now_playing?api_key=3a53e4502f95a3ad2ae93758ce877954&language=es-ES&page=1');
+    xhr.send();
+
+</script>
+</html>
+

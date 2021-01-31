@@ -1,0 +1,306 @@
+<script >
+
+var a = "ola";
+function global() {
+    var b = "K";
+
+    function local() {
+        var c = "ace";
+        return a+b+c;
+    }
+    return local;
+}
+console.log(global());
+console.log(global()());
+
+var closure = global();
+closure();
+console.log(closure());
+
+var miContador = (function () {
+    var _contador=0;
+
+    function decrementar() {
+        _contador--;
+
+    }
+    function incrementar() {
+        _contador++;
+    }
+    function valor() {
+        return _contador;
+    }
+    return{
+        incrementar: incrementar,
+        decrementar: decrementar,
+        valor: valor
+    }
+
+} )();
+
+console.log(miContador.valor());
+miContador.incrementar();
+miContador.incrementar();
+console.log(miContador.valor());
+miContador.decrementar();
+console.log(miContador.valor());
+///funciones como clase
+console.log("funciones como clase");
+function inventario(nombre) {
+    var _nombre = nombre;
+    var _articulos ={};
+
+    function add(nombre,cantidad) {
+        _articulos[nombre]=cantidad;
+    }
+
+    function borrar(nombre) {
+        delete _articulos[nombre];
+    }
+
+    function cantidad(nombre) {
+        return _articulos[nombre];
+    }
+
+    function nombre() {
+        return _nombre;
+    }
+    return{
+        add:add,
+        borrar:borrar,
+        cantidad:cantidad,
+        nombre: nombre
+    };
+
+}
+
+var libros = inventario("libros");
+libros.add("AngularJS",3);
+libros.add("javascriptgg",5);
+libros.add("NOdeJS",10);
+console.log(libros.cantidad('AngularJS'));
+console.log(libros.cantidad('javascriptgg'));
+libros.borrar('javascriptgg');
+console.log(libros.cantidad('javascriptgg'));
+
+console.log('otra foroma');
+function Inventario2(nombre) {
+    this.nombre =nombre;
+    this.articulos = [];
+    
+    this.add = function (nombre,cantidad) {
+        this.articulos[nombre]=cantidad;
+
+    }
+
+    this.borrar = function (nombre) {
+        delete this.articulos[nombre];
+    }
+
+    this.cantidad = function (nombre) {
+        return this.articulos[nombre];
+    }
+
+    this.getNombre = function () {
+        return this.nombre;
+    }
+
+}
+
+var obros = new Inventario2('libros');
+
+obros.add('ja',5);
+obros.add('hu',5);
+obros.add('njs',50)
+console.log(obros.cantidad('ja'));
+console.log(obros.cantidad('hu'));
+console.log(obros.cantidad('njs'));
+obros.borrar('hu');
+console.log(obros.cantidad('ja'));
+console.log(obros.cantidad('hu'));
+console.log(obros.cantidad('njs'));
+
+
+//con prototype (forma correcta)
+console.log('con prototype de forma correcta')
+function Inventarios(nombre) {
+    this.nombre = nombre;
+    this.articulos=[];
+};
+Inventarios.prototype={
+    add: function (nombre, cantidad) {
+        this.articulos[nombre] = cantidad;
+    },
+    borrar: function (nombre) {
+        delete this.articulos[nombre];
+    },
+    cantidad: function (nombre) {
+        return this.articulos[nombre];
+    },
+
+    getNombre : function () {
+        return this.nombre;
+    }
+    
+     
+}
+
+var libros3 = new Inventarios('libros');
+libros3.add('js',6);
+libros3.add('js1',45);
+libros3.add('js2',78);
+console.log(libros3.cantidad('js1'));
+console.log(libros3.cantidad('js2'));
+
+//con ecmascript6 cambia la cosa
+
+class Inventario22{
+    constructor(nombre){
+        this.nombre= nombre;
+        this.articulos=[];
+    }
+    add(nombre,cantidad){
+        this.articulos[nombre]=cantidad;
+    }
+    borrar(nombre){
+        delete this.articulos[nombre];
+    }
+    cantidad(nombre){
+        return this.articulos[nombre];
+    }
+    getNombre(){
+        return this.nombre;
+    }
+
+}
+
+var libdos = new Inventario22('libroooas');
+libdos.add('nodeJs',47);
+libdos.add('angularJs',470);
+libdos.add('vueJs',4700);
+console.log(libdos.articulos['nodeJs']);
+console.log(libdos.articulos['angularJs']);
+console.log(libdos.articulos['vueJs']);
+libdos.borrar('nodeJs');
+console.log(libdos.articulos['nodeJs']);
+console.log(libdos.getNombre());
+
+//herencia
+console.log('herencia');
+
+class Vehiculo {
+constructor (tipo, nombre, ruedas) {
+this.tipo = tipo;
+this.nombre = nombre;
+this.ruedas = ruedas
+}
+getRuedas () {
+return this.ruedas
+}
+arrancar () {
+console.log(`Arrancando el ${this.nombre}`)
+}
+aparcar () {
+console.log(`Aparcando el ${this.nombre}`)
+}
+}
+
+class Coche extends Vehiculo {
+constructor (nombre) {
+super('coche', nombre, 4)
+}
+}
+
+let fordFocus = new Coche('Ford Focus')
+console.log(fordFocus.getRuedas()); // 4
+console.log(fordFocus.arrancar()); // Arrancando el Ford Focus
+
+
+
+var objeto = {
+unArray: new Array(10000)
+};
+
+//ahorrando milisegundos bucles
+console.log('bucles');
+console.time('test1');
+for(var i=0; i<objeto.unArray.length; i++) {
+objeto.unArray[i] = "Hola!";
+}
+console.timeEnd('test1');
+console.log('uno');
+console.time('test2');
+var unArray = objeto.unArray;
+for (var i=0, longitud=unArray.length; i<longitud; i++) {
+unArray[i] = "Hola!";
+}
+console.timeEnd('test2');
+
+var miarray2= [1,2,3,4,5,6,7,8,9];
+miarray2.forEach((elemento,index)=>{
+    console.log("el valor de la posicion "+index+" es "+elemento);
+});
+
+
+var ibro = {
+    titulo: "aprendiendo javascript",
+    autor: "Carlos Azausure",
+    numPagina: 64,
+    editorial:"carlits",
+    precio:2.26
+}
+
+var propiedades= Object.getOwnPropertyNames(ibro);
+ propiedades.forEach((name)=>{
+    var valor = Object.getOwnPropertyDescriptor(ibro,name).value;
+    console.log("la prop "+name+" contiene "+valor);    
+ });
+
+ for(var prop in ibro){
+     console.log("prop mas facil de "+prop+" contiene "+ibro[prop]);
+ }
+//jsoc
+console.log('json');
+ var usuario = {
+    "id": "012345678",
+    "username": "carlosazaustre",
+    "password": "fkldfn4r09330adafnanf9843fbcdkjdkks",
+    "data": {
+        "name": "Carlos Azaustre",
+        "email": "carlosazaustre@gmail.com",
+        "city": "Madrid",
+        "country": "ES"
+        },
+    "preferences": {
+        "contact": {
+            "email": true,
+            "notify": true
+            },
+        "interests": [
+            "javascript",
+            "nodejs",
+            "angularjs"
+            ]
+        }
+};
+console.log(usuario);
+console.log(usuario.data.city);
+var usuariostrin=JSON.stringify(usuario);
+console.log(usuariostrin);
+var usuarioreconstruido = JSON.parse(usuariostrin);
+console.log(usuarioreconstruido);
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>promesas</h1>
+</body>
+<script>
+     //con callback
+     /*
+     function loadCSS(url,callback) {
+         console.log('cargando :>> ', url);
+         var elem=window.document.createElement('link');
+         elem.rel="stylesheet";
+         elem.href=url;
+         window.document.head.appendChild(elem);
+         callback();
+     }
+     loadCSS('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css',function () {
+         console.log("Estilos cargados");
+     });
+*/
+//con ES6
+ /*    function loadCSS(url) {
+         console.log('cargando del estilo :>> ');
+         var promise = new Promise(
+             function resolve(resolve,reject) {
+                 var elem= window.document.createElement('link');
+                 elem.rel = "stylesheet";
+                 elem.href=url;
+                 window.document.head.appendChild(elem);
+                 resolve();
+             }
+         )
+         return promise;
+     }
+     
+     loadCSS('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css')
+     .then(() => {
+      console.log('se cargo el estilo');   
+     }).catch((err) => {
+        console.log('no se cargo Error');
+     });*/
+     //ejemplo de la division entre cero
+
+     function division(n1,n2){
+        var promise = new Promise(
+            function resolver (resolve,reject) {
+                if (n2==0) {
+                    reject(new Error ('No se puede dividir entre cero'));
+                }else{
+                    resolve(n1/n2);
+                }
+            }
+        );
+        return promise;
+     }
+     division(10,0)
+     .then((result) => {
+        console.log ('la division es '+ result);         
+     }).catch((err) => {
+        console.log ('Error=>>'+ err);         
+     });
+</script>
+</html>

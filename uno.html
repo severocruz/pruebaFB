@@ -1,0 +1,201 @@
+<script>
+    console.log(typeof 5);
+    console.log(typeof false);
+    console.log(typeof 'carlos');
+    console.log(typeof undefined);
+    var x=1;
+    console.log(x);
+    var y = ++x;
+    console.log(x+' '+y);
+    var z= y++ + x;
+    console.log(x+' '+y+' '+z);
+    console.log(z===x);
+    console.log(0 && true);
+    console.log(1 && 'hola');
+    console.log(true || false);
+    console.log(true || true);
+    console.log(false || true);
+    console.log(false || false);
+    console.log((true) ? 5:2);
+    console.log((false) ? 5:2);
+
+    var libroAngular={
+        titulo: 'Desarrollo agil con angular',
+        autor: 'carlos sura',
+        paginas: 64,
+        formatos:["pdf","epub","movi"],
+        precio: 2.79,
+        puclicado: false
+
+    }
+
+    console.log(libroAngular);
+    console.log(libroAngular.precio);
+    console.log(libroAngular['paginas']);
+    var propiedad= 'autor';
+    console.log(libroAngular[propiedad]);
+
+     libroAngular ={
+        paginas:64,
+        leer: function () {
+            console.log("he leido el libro de angular");
+
+        }
+    }
+    libroAngular.leer();
+    var miObjeto={propiedad: "valor"};
+    var miObjeto2  = new Object({propiedad: "valor"});
+    console.log(miObjeto);
+    console.log(miObjeto2);
+
+    var libro={
+        titulo: "Desarrollo agil con ancular",
+        autor: {
+            nombre : "carlos sausure",
+            nacionalidad: "española",
+            edad: 30,
+            contacto: {
+                email:"carlos@gmail.com",
+                twiter:"@carlossausure"
+            }
+        },
+        editorial: {
+            nombre:"carloseditora",
+            web: "https://carlosazausure.com"
+        }
+    };
+    console.log(libro);
+    console.log(libro.autor.nombre);
+    console.log(libro['autor']['edad']);
+    console.log(libro['editorial'].web);
+    console.log(libro.autor.contacto.twiter);
+    console.log(libro.autor['contacto'].twiter);
+
+    var coche1 = {marca: "ford",modelo:"focus"};
+    var coche2 = {marca: "ford",modelo:"focus"};
+    console.log(coche1===coche2);
+    console.log(coche1.modelo===coche2.modelo);
+    var coche3= coche1;
+    console.log(coche1===coche3);
+    console.log(5.4e2);
+    console.log(0xFF);
+    console.log(1/0);
+    console.log(-1/0);
+    console.log(1e1000);
+    console.log(-1e1000);
+    console.log(undefined/15);
+    console.log(parseInt("1111"));
+    console.log(parseInt("1111",2));
+    console.log(parseInt("1111",16));
+    console.log(parseFloat("5e3"));
+    var n = 2.5674;
+    console.log (n.toFixed(0));
+    console.log (n.toFixed(2));
+    n = 2.5674;
+    console.log(n.toExponential(2));
+    console.log((1111).toString(10));
+    console.log((15).toString(2));
+    console.log((4369).toString(16));
+
+    console.log(Math.PI);
+    console.log(Math.E);
+    console.log(Math.random());
+    console.log(Math.pow(2,6));
+    console.log(Math.sqrt(4));
+    console.log(Math.min(4,5,3,2,1,8));
+    console.log(Math.max(4,5,3,2,1,8));
+    console.log(Math.floor(6.4));
+    console.log(Math.ceil(6.4));
+    console.log(Math.round(6.4));
+    console.log(Math.abs(-5));
+    var miArray=[1,true,[3,2],"hola",{clave:"valor"}];
+    console.log(miArray);
+    console.log(miArray[2]);
+    console.log(miArray.length);
+    console.log(miArray[10]);
+////interesante joinnn
+//manejo de arraaaaays
+var valor = 3;
+     var template = ["<lli>",valor,"</li>"].join("algomas");
+     console.log(template);
+
+var miaray =[2,4,6,8];
+var raices = miaray.map(Math.sqrt);
+
+var pordos = miaray.map(
+    function (params) {
+        return params*=2;
+    }
+);
+
+var portres= miaray.map(elemento=>elemento*=3);
+
+
+console.log(miaray);
+console.log(raices);
+console.log(pordos);
+console.log(portres);
+
+var miotroArray = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16];
+var resultado = miotroArray.filter(elemento=>elemento%3===0);
+
+console.log(miotroArray);
+console.log(resultado);
+
+console.log(miotroArray.slice(2));
+console.log(miotroArray.slice(2,4));
+console.log(miotroArray.slice(2,-1));
+console.log(miotroArray.slice(2,-2));
+
+//string manejo
+console.log('javascript'[2]);
+console.log('javascript'.length);
+console.log('javascript'.charCodeAt(2));
+console.log('javascript'.indexOf('script'));
+console.log('javascript'.substring(4,8));
+
+var texto= new String('hola mundo');
+
+var fecha = new Date();
+console.log(fecha);
+fecha= fecha.toString();
+console.log(fecha);
+fecha= fecha.split(" ")
+console.log(fecha);
+console.log(fecha[4]);
+
+function saludar() {
+    var argumentos= new Array() ;
+    var c=0;
+    for (let i = 0; i < arguments.length; i++) {
+        const element = arguments[i];
+        argumentos[i]=element;
+    }
+
+    return argumentos;
+}
+
+console.log(saludar('hola ','juan ','sin ','miedo'));
+
+function saludar2(tipo, nombre) {
+    var tipo = tipo || 'hola';
+    var nombre = nombre ||'carlits';
+    return tipo+' -- '+nombre
+}
+console.log(saludar2('ulala'));
+
+var valores="global";
+function localf() {
+    var valor="nada que wer";
+    return valor;
+}
+console.log(valores); // "global"
+console.log(localf()); // "local"
+console.log(valores);
+
+var saludar= function (nombre) {
+    return 'hola '+nombre; 
+}
+console.log(saludar);
+console.log(saludar('gilberto'));
+    </script>

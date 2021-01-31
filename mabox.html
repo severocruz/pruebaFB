@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.49.0/mapbox-gl.js'></script>
+    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.49.0/mapbox-gl.css' rel='stylesheet' />
+	<style>
+        body {
+        margin: 0;
+        padding: 0;
+      }
+      #map {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        width: 200px;
+        height: 200px;
+      }
+      .marker {
+        background-image: url('mapbox-icon.png');
+        background-size: cover;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        cursor: pointer;
+      }
+      .mapboxgl-popup {
+        max-width: 200px;
+      }
+      .mapboxgl-popup-content {
+        text-align: center;
+        font-family: 'Open Sans', sans-serif;
+      }
+         #coordenadas {     
+        display: block;
+        position: relative;
+        margin: 0px auto;
+        width: 40%;
+        padding: 5px;
+        border: none;
+        border-radius: 7px;
+        font-size: 15px;
+		font-family: Montserrat;
+        text-align: center;
+        color: #000;
+        background: #D6EAF8;
+    }
+	</style>
+    <title>Document</title>
+</head>
+<body>
+    <div id="map" ></div>
+    <pre id='coordenadas'></pre>
+    <script>
+      var geojson;
+      var map;
+      var misCoords=[-68.16210812867098,-16.504165122283013];
+      
+      mapboxgl.accessToken = 'pk.eyJ1Ijoic2V2ZXJvY3J1em5pbmEiLCJhIjoiY2thM2NsdW5hMGVzMTNtcWxua2FpbzFtdSJ9.ayYVcbHZAF07nkYM3yyW8w'; // Nuestro Token de acceso
+        
+            map = new mapboxgl.Map({
+            container: 'map', // id del contenedor
+            style: 'mapbox://styles/mapbox/streets-v9', // localización del mapa de estilo
+            center: [misCoords[0],misCoords[1]], // Posición inicial
+            zoom: 10 // Zoom inicial
+            });
+            
+            map.on('click',e=>{
+
+              geojson = generaGjson(e.lngLat.lat,e.lngLat.lng);
+              marcar();
+            console.log('object :>> ', e.lngLat);
+            });
+
+     
+         
+      
+       // console.log('misCoords :>> ', asignarCoords());
+        
+        //asignarCoords();
+    
+function generaGjson(lati,longi) {
+  var gjson = {
+        'type': 'FeatureCollection',
+        'features': [
+          {
+            'type': 'Feature',
+            'geometry': {
+              'type': 'Point',
+              'coordinates': [longi, lati]
+            },
+            'properties': {
+              'title': 'Estoy aqui',
+              'description': 'Ciudad de El Alto, Bolivia'
+            }
+          }
+        ]
+      };
+      
+      return gjson;
+}
+function marcar() {
+  geojson.features.forEach((marker)=>{
+    
+            var el = document.createElement('div');
+            el.className='marker';
+
+            new mapboxgl.Marker(el)
+                .setLngLat(marker.geometry.coordinates)
+                .setPopup(
+                  new mapboxgl.Popup({offset: 25})
+                    .setHTML(
+                        `
+                        <h3>${marker.properties.title}</h3>
+                        <p>${marker.properties.description}</p>
+                        `
+                    )
+                )
+                .addTo(map)
+
+        });
+}
+        
+       
+       
+        
+        // map.on('mousemove',e=>{
+        //     document.getElementById('coordenadas').innerHTML= JSON.stringify(e.lngLat);
+        // });
+        
+        // console.log('object :>> ', misCoords[0]);
+        // console.log('object :>> ', misCoords[1]);
+        
+
+        
+    </script>
+</body>
+</html>
